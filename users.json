@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "email": "mark31@example.org",
+    "first_name": "Rebecca",
+    "last_name": "Barnett",
+    "avatar": "https://picsum.photos/46/88"
+  },
+  {
+    "id": 2,
+    "email": "xduke@example.net",
+    "first_name": "Michael",
+    "last_name": "Frazier",
+    "avatar": "https://picsum.photos/652/674"
+  },
+  {
+    "id": 3,
+    "email": "gomezrenee@example.com",
+    "first_name": "Angelica",
+    "last_name": "Butler",
+    "avatar": "https://placekitten.com/366/141"
+  },
+  {
+    "id": 4,
+    "email": "crossjacqueline@example.com",
+    "first_name": "Amanda",
+    "last_name": "Porter",
+    "avatar": "https://placekitten.com/1010/216"
+  },
+  {
+    "id": 5,
+    "email": "strongdonald@example.net",
+    "first_name": "Jesus",
+    "last_name": "Johnson",
+    "avatar": "https://placekitten.com/641/28"
+  },
+  {
+    "id": 6,
+    "email": "fvance@example.com",
+    "first_name": "Michael",
+    "last_name": "Bailey",
+    "avatar": "https://picsum.photos/727/51"
+  },
+  {
+    "id": 7,
+    "email": "wrightdonald@example.net",
+    "first_name": "John",
+    "last_name": "Bird",
+    "avatar": "https://placekitten.com/870/802"
+  },
+  {
+    "id": 8,
+    "email": "shafferlouis@example.org",
+    "first_name": "Nicole",
+    "last_name": "Wright",
+    "avatar": "https://placekitten.com/490/0"
+  },
+  {
+    "id": 9,
+    "email": "arichard@example.net",
+    "first_name": "Mitchell",
+    "last_name": "Miller",
+    "avatar": "https://placekitten.com/83/782"
+  },
+  {
+    "id": 10,
+    "email": "brandon19@example.com",
+    "first_name": "Hayley",
+    "last_name": "Castillo",
+    "avatar": "https://placekitten.com/491/268"
+  },
+  {
+    "id": 11,
+    "email": "jacobmiles@example.com",
+    "first_name": "Samuel",
+    "last_name": "Chang",
+    "avatar": "https://dummyimage.com/667x114"
+  },
+  {
+    "id": 12,
+    "email": "pschneider@example.org",
+    "first_name": "Jerry",
+    "last_name": "Riley",
+    "avatar": "https://picsum.photos/704/161"
+  },
+  {
+    "id": 13,
+    "email": "tamara55@example.net",
+    "first_name": "John",
+    "last_name": "Mcdonald",
+    "avatar": "https://placekitten.com/612/324"
+  },
+  {
+    "id": 14,
+    "email": "ssmith@example.org",
+    "first_name": "Michael",
+    "last_name": "Leon",
+    "avatar": "https://dummyimage.com/915x466"
+  },
+  {
+    "id": 15,
+    "email": "andersonadam@example.net",
+    "first_name": "Marcia",
+    "last_name": "Green",
+    "avatar": "https://placekitten.com/487/640"
+  },
+  {
+    "id": 16,
+    "email": "smithtodd@example.net",
+    "first_name": "Whitney",
+    "last_name": "Morton",
+    "avatar": "https://placekitten.com/189/714"
+  },
+  {
+    "id": 17,
+    "email": "upena@example.org",
+    "first_name": "Ryan",
+    "last_name": "George",
+    "avatar": "https://picsum.photos/872/625"
+  },
+  {
+    "id": 18,
+    "email": "jbailey@example.net",
+    "first_name": "James",
+    "last_name": "Scott",
+    "avatar": "https://picsum.photos/837/278"
+  },
+  {
+    "id": 19,
+    "email": "robbinsmelissa@example.org",
+    "first_name": "Jacqueline",
+    "last_name": "Mcdonald",
+    "avatar": "https://placekitten.com/365/26"
+  },
+  {
+    "id": 20,
+    "email": "vmiller@example.org",
+    "first_name": "Jessica",
+    "last_name": "Rivas",
+    "avatar": "https://dummyimage.com/356x3"
+  }
+]
