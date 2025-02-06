@@ -41,7 +41,7 @@ def get_user(user_id: int) -> User:
 @app.get("/api/users", response_model=Page[User])
 def get_users() -> Page[User]:
     if not users:
-        raise HTTPException(status_code=404, detail="No found users")
+        raise HTTPException(status_code=404, detail="Users not found")
     return paginate(users)
 
 
