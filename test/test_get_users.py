@@ -3,20 +3,20 @@ from http import HTTPStatus
 import pytest
 import requests
 
-from models.User import UsersResponse
+from app.models.User import ListUserPaginationModel
 
 
 @pytest.fixture
 def users(app_url):
     response = requests.get(f"{app_url}/api/users")
     assert response.status_code == HTTPStatus.OK
-    return UsersResponse.model_validate(response.json())
+    return ListUserPaginationModel.model_validate(response.json())
 
 
 def test_users(app_url) -> None:
     response = requests.get(f"{app_url}/api/users")
     assert response.status_code == HTTPStatus.OK
-    users_data = UsersResponse.model_validate(response.json())
+    users_data = ListUserPaginationModel.model_validate(response.json())
 
     assert isinstance(users_data.items, list)
     assert len(users_data.items) > 0
@@ -32,16 +32,16 @@ def test_pagination_size(app_url, size: int) -> None:
     response = requests.get(f"{app_url}/api/users?size={size}")
     assert response.status_code == HTTPStatus.OK
 
-    data = UsersResponse.model_validate(response.json())
+    data = ListUserPaginationModel.model_validate(response.json())
     assert len(data.items) == size
 
 
 @pytest.mark.parametrize("size", [1, 2, 3])
-def test_pagination_total_pages(app_url, users: UsersResponse, size: int) -> None:
+def test_pagination_total_pages(app_url, users: ListUserPaginationModel, size: int) -> None:
     response = requests.get(f"{app_url}/api/users?size={size}")
     assert response.status_code == HTTPStatus.OK
 
-    data = UsersResponse.model_validate(response.json())
+    data = ListUserPaginationModel.model_validate(response.json())
     expected_pages = (users.total + size - 1) // size
     assert data.pages == expected_pages
 
@@ -56,8 +56,8 @@ def test_pagination_different_pages(app_url: str, page_one: int, page_two: int, 
     assert response_page_1.status_code == HTTPStatus.OK
     assert response_page_2.status_code == HTTPStatus.OK
 
-    data_page_1 = UsersResponse.model_validate(response_page_1.json())
-    data_page_2 = UsersResponse.model_validate(response_page_2.json())
+    data_page_1 = ListUserPaginationModel.model_validate(response_page_1.json())
+    data_page_2 = ListUserPaginationModel.model_validate(response_page_2.json())
 
     ids_page_1 = {user.id for user in data_page_1.items}
     ids_page_2 = {user.id for user in data_page_2.items}
@@ -75,7 +75,7 @@ def test_pagination_correct_pages(app_url: str, page: int, size: int) -> None:
     response = requests.get(f"{app_url}/api/users?page={page}&size={size}")
     assert response.status_code == HTTPStatus.OK
 
-    data = UsersResponse.model_validate(response.json())
+    data = ListUserPaginationModel.model_validate(response.json())
     expected_pages = (data.total + size - 1) // size
     assert data.pages == expected_pages, f"Ожидалось {expected_pages} страниц, получено {data.pages}"
 
@@ -85,7 +85,7 @@ def test_pagination_response_fields(app_url: str, size: int) -> None:
     response = requests.get(f"{app_url}/api/users?size={size}")
     assert response.status_code == HTTPStatus.OK
 
-    data = UsersResponse.model_validate(response.json())
+    data = ListUserPaginationModel.model_validate(response.json())
     assert isinstance(data.page, int)
     assert isinstance(data.size, int)
     assert isinstance(data.total, int)
