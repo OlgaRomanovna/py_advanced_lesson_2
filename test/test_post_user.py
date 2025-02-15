@@ -22,7 +22,9 @@ class TestCreationUser:
         assert response_post.status_code == HTTPStatus.CREATED
         user = User.model_validate(response_post.json())
         response_get = requests.get(f"{app_url}/api/users/{user.id}")
-        User.model_validate(response_get.json())
+        assert response_post.status_code == HTTPStatus.OK
+        get_user = User.model_validate(response_get.json())
+        assert user.id == get_user.id
 
     def test_invalid_email(self, app_url):
         copy_data = copy.deepcopy(user_payload)

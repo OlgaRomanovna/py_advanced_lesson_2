@@ -16,6 +16,7 @@ user_payload = {
 }
 
 
+@pytest.fixture(scope="function")
 def create_user(app_url):
     response_post = requests.post(f"{app_url}/api/users", json=user_payload)
     user = User.model_validate(response_post.json())
@@ -23,12 +24,11 @@ def create_user(app_url):
 
 
 class TestUpdatedUser:
-    def test_successful_update(self, app_url):
+    def test_successful_update(self, app_url, create_user):
         updated_first_name = {
             "first_name": "Hulio"
         }
-        user_id = create_user(app_url)
-        response_patch = requests.patch(f"{app_url}/api/users/{user_id}", json=updated_first_name)
+        response_patch = requests.patch(f"{app_url}/api/users/{create_user}", json=updated_first_name)
         assert response_patch.status_code == HTTPStatus.OK
         user = User.model_validate(response_patch.json())
         response_get = requests.get(f"{app_url}/api/users/{user.id}")

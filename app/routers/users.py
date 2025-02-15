@@ -43,7 +43,7 @@ def update_user(user_id: int, user: User) -> User:
     if user_id < 1:
         raise HTTPException(status_code=HTTPStatus.UNPROCESSABLE_ENTITY, detail="Invalid user id")
     try:
-        updated_user = User.model_validate(user.model_dump())
+        updated_user = UserUpdate.model_validate(user.model_dump())
     except ValidationError as e:
         raise HTTPException(status_code=HTTPStatus.UNPROCESSABLE_ENTITY, detail=e.errors())
 

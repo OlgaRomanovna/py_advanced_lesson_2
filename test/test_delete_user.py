@@ -15,7 +15,7 @@ user_payload = {
             "avatar": fake.image_url()
 }
 
-
+@pytest.fixture(scope="function")
 def create_user(app_url):
     response_post = requests.post(f"{app_url}/api/users", json=user_payload)
     user = User.model_validate(response_post.json())
@@ -24,11 +24,10 @@ def create_user(app_url):
 
 class TestDeletionUser:
 
-    def test_successful_removal(self, app_url):
-        user_id = create_user(app_url)
-        response_delete = requests.delete(f"{app_url}/api/users/{user_id}")
+    def test_successful_removal(self, app_url, create_user):
+        response_delete = requests.delete(f"{app_url}/api/users/{create_user}")
         assert response_delete.status_code == HTTPStatus.OK
-        response_get = requests.get(f"{app_url}/api/users/{user_id}")
+        response_get = requests.get(f"{app_url}/api/users/{create_user}")
         assert response_get.status_code == HTTPStatus.NOT_FOUND
 
     @pytest.mark.parametrize("user_id", [-1, 0, "fafaf"])
