@@ -4,7 +4,7 @@ from app.database.users import create_user
 from app.models.User import User
 
 
-async def generate_users(num_users):
+def generate_users(num_users):
     fake = Faker()
 
     for _ in range(num_users):
@@ -14,5 +14,5 @@ async def generate_users(num_users):
             last_name=fake.last_name(),
             avatar=fake.image_url(),
         )
-        await create_user(user)
+        return create_user(user)
 

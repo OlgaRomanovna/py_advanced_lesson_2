@@ -1,3 +1,4 @@
+import logging
 import os
 import dotenv
 import pytest
@@ -14,7 +15,9 @@ engine = create_engine(os.getenv("DATABASE_ENGINE"), pool_size=int(os.getenv("DA
 
 
 def create_db_and_tables():
+    logging.info("Creating tables...")
     SQLModel.metadata.create_all(engine)
+    logging.info("Tables created.")
 
 
 def clear_db():

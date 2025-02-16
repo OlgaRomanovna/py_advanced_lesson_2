@@ -12,19 +12,21 @@ from fastapi import FastAPI
 from app.utils.generate_users import generate_users
 from fastapi_pagination import add_pagination
 from app.routers import status, users
-from app.database.engine import create_db_and_tables, clear_db
+from app.database.engine import create_db_and_tables
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     logging.warning("On startup")
+    # clear_db()
     create_db_and_tables()
-    await generate_users(20)
+    loop = asyncio.get_running_loop()
+    with ThreadPoolExecutor() as pool:
+        await loop.run_in_executor(pool, generate_users, 20)
     yield
-    clear_db()
     logging.warning("On shutdown")
 
-app = FastAPI()
+app = FastAPI(lifespan=lifespan)
 add_pagination(app)
 app.include_router(status.router)
 app.include_router(users.router)
