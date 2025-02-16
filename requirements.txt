@@ -10,3 +10,4 @@ fastapi-pagination
 psycopg2-binary
 sqlalchemy
 sqlmodel
+fastapi[standard]
