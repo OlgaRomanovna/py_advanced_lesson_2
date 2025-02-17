@@ -20,13 +20,6 @@ def create_db_and_tables():
     logging.info("Tables created.")
 
 
-def clear_db():
-    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    with SessionLocal() as session:
-        session.execute(delete(User))
-        session.commit()
-
-
 def check_availability() -> bool:
     try:
         with Session(engine) as session:

@@ -18,11 +18,8 @@ from app.database.engine import create_db_and_tables
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     logging.warning("On startup")
-    # clear_db()
     create_db_and_tables()
-    loop = asyncio.get_running_loop()
-    with ThreadPoolExecutor() as pool:
-        await loop.run_in_executor(pool, generate_users, 20)
+    generate_users(20)
     yield
     logging.warning("On shutdown")
 
